@@ -1,0 +1,58 @@
+{
+    "name": "druid628/rulesdemo",
+    "type": "project",
+    "license": "MIT",
+    "type": "project",
+    "description": "Ruler Demo in Symfony (2.5)",
+    "autoload": {
+        "psr-4": { "blueshamrock\\RulesDemo": "src/" }
+    },
+    "authors": [
+        {
+            "name": "Micah Breedlove",
+            "email": "micah@blueshamrock.com",
+            "homepage": "http://www.blueshamrock.com/"
+        }
+    ],
+    "require": {
+        "php"                                  : ">=5.4",
+        "blueshamrock/bsd-rad"                 : "~1.1",
+        "symfony/symfony"                      : "~2.5",
+        "doctrine/orm"                         : "~2.2,>=2.2.3",
+        "doctrine/doctrine-bundle"             : "~1.2",
+        "twig/extensions"                      : "~1.0",
+        "symfony/assetic-bundle"               : "~2.3",
+        "symfony/swiftmailer-bundle"           : "~2.3",
+        "symfony/monolog-bundle"               : "~2.4",
+        "sensio/distribution-bundle"           : "~3.0",
+        "sensio/framework-extra-bundle"        : "~3.0",
+        "ruler/ruler"                          : "~0.3"
+   },
+    "scripts": {
+        "post-install-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles"
+        ],
+        "post-update-cmd": [
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "branch-alias": {
+            "dev-master": "2.5-dev"
+        }
+    }
+}
