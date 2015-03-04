@@ -5,7 +5,8 @@
     "type": "project",
     "description": "Ruler Demo in Symfony (2.5)",
     "autoload": {
-        "psr-4": { "blueshamrock\\RulesDemo": "src/" }
+        "psr-4": { "Druid628\\RulesDemo\\": "src/" }
+
     },
     "authors": [
         {
@@ -26,6 +27,7 @@
         "symfony/monolog-bundle"               : "~2.4",
         "sensio/distribution-bundle"           : "~3.0",
         "sensio/framework-extra-bundle"        : "~3.0",
+                "sensio/generator-bundle"              : "~2.5@dev",
         "ruler/ruler"                          : "~0.3"
    },
     "scripts": {
