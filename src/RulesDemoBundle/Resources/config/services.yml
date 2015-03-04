@@ -1,0 +1,10 @@
+parameters:
+   ruler.class: "Ruler\Ruler"
+   rule.builder.class: "Ruler\RuleBuilder"
+
+services:
+   ruler:
+      class: "%ruler.class%"
+
+   rule.builder: 
+      class: "%rule.builder.class%"
