@@ -1,9 +1,9 @@
 {
     "name": "druid628/rulesdemo",
     "type": "project",
-    "license": "MIT",
+    "license": "proprietary",
     "type": "project",
-    "description": "Ruler Demo in Symfony (2.5)",
+    "description": "Ruler Demo in Symfony (2.8)",
     "autoload": {
         "psr-4": { "Druid628\\RulesDemo\\": "src/" }
 
@@ -16,34 +16,38 @@
         }
     ],
     "require": {
-        "php"                                  : ">=5.4",
+        "php"                                  : ">=5.6",
         "blueshamrock/bsd-rad"                 : "~1.1",
-        "symfony/symfony"                      : "~2.5",
-        "doctrine/orm"                         : "~2.2,>=2.2.3",
-        "doctrine/doctrine-bundle"             : "~1.2",
-        "twig/extensions"                      : "~1.0",
-        "symfony/assetic-bundle"               : "~2.3",
+        "symfony/symfony"                      : "2.8.*",
+        "doctrine/orm"                         : "^2.4.8",
+        "doctrine/doctrine-bundle"             : "~1.4",
         "symfony/swiftmailer-bundle"           : "~2.3",
         "symfony/monolog-bundle"               : "~2.4",
-        "sensio/distribution-bundle"           : "~3.0",
-        "sensio/framework-extra-bundle"        : "~3.0",
-                "sensio/generator-bundle"              : "~2.5@dev",
+        "sensio/distribution-bundle"           : "~4.0",
+        "sensio/framework-extra-bundle"        : "^3.0.2",
+        "incenteev/composer-parameter-handler" : "~2.0",
+        "twig/extensions"                      : "~1.0",
+        "symfony/assetic-bundle"               : "~2.3",
         "ruler/ruler"                          : "~0.3"
-   },
+    },
+    "require-dev": {
+        "sensio/generator-bundle": "~3.0",
+        "symfony/phpunit-bridge": "~2.7"
+    },
     "scripts": {
         "post-install-cmd": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-update-cmd": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::removeSymfonyStandardFiles"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
     },
     "config": {
@@ -52,9 +56,6 @@
     "minimum-stability": "dev",
     "extra": {
         "symfony-app-dir": "app",
-        "symfony-web-dir": "web",
-        "branch-alias": {
-            "dev-master": "2.5-dev"
-        }
+        "symfony-web-dir": "web"
     }
 }

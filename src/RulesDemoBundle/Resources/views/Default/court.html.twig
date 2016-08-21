@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="bonding">
+{% if form is defined %}
+    {{ form(form) }}
+{% else %}
+    <h2>Court District: {{ court.district }}</h2>
+    <h2>Bond Amount: {{ court.amount }}</h2>
+{% endif %}
+</div>
+{% endblock body %}

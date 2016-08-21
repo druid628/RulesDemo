@@ -33,18 +33,21 @@ class AppKernel extends Kernel
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
     }
 
+    public function getRootDir()
+    {
+        return __DIR__;
+    }
 
-    /*
     // for custom cache directories
     public function getCacheDir()
     {
-        return $this->rootDir . '/cache/' . $this->environment;
+        return dirname(__DIR__).'/var/cache/'.$this->getEnvironment();
     }
 
     // for custom log directory
     public function getLogDir()
     {
-        return $this->rootDir . '/logs';
+        return dirname(__DIR__).'/var/logs';
     }
-    */ 
+
 }

@@ -1,0 +1,22 @@
+#header {
+    background-color: #ffffff;
+    font-size: 3em;
+    min-height: 2em;
+}
+
+#content{
+    min-height: 100%;
+}
+
+#content .bonding {
+    padding: 1em;
+    background-color: ghostwhite;
+    font-size: 2em;
+}
+
+select {
+    min-height: 40px;
+    font-size: 65px;
+}
+
+
