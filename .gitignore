@@ -1,9 +1,9 @@
 /web/bundles/
 /app/bootstrap.php.cache
-/app/cache/*
+/var/cache/*
 /app/config/parameters.yml
 /app/config/databases.yml
-/app/logs/*
+/var/logs/*
 /build/
 /vendor/
 /bin/

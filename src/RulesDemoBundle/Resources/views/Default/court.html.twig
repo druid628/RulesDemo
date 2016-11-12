@@ -7,6 +7,7 @@
 {% else %}
     <h2>Court District: {{ court.district }}</h2>
     <h2>Bond Amount: {{ court.amount }}</h2>
+    <a href="{{ url('court_demo') }}"><< Back</a>
 {% endif %}
 </div>
 {% endblock body %}

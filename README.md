@@ -9,3 +9,10 @@ Rules Engine to Wrangle Complexity.**
 ## Links
 
  * Slides - <http://sthen.es/mqh4ub20>
+
+
+## Technical Architecture  
+
+ * PHP 5.6+
+ * Symfony 2.8
+ * Ruler (Rules Engine for PHP)

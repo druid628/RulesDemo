@@ -28,20 +28,36 @@ class DefaultController extends BSDController
      */
     public function demoAction(Request $request)
     {
-        $form = $this->createFormBuilder(null)
+        $form = $this->createFormBuilder()
             ->add('use', ChoiceType::class, [
                 'label'   => 'Utility',
-                'choices' => ['1' => 'Not very useful', '5' => 'Useful', '10' => 'Supremely Useful'],
+                'placeholder' => '--',
+                'choices' => [
+                    '1' => 'Not very useful',
+                    '5' => 'Useful',
+                    '10' => 'Supremely Useful'
+                ],
+            ])
+            ->add('aesthetic', ChoiceType::class, [
+                'label'   => 'Aesthetics',
+                'placeholder' => '--',
+                'choices' => [
+                    '1' => 'Looks matter not',
+                    '5' => 'Eh',
+                    '10' => 'It has to look amazing'
+                ],
             ])
             ->add('price', ChoiceType::class, [
                 'label'   => 'Price',
+                'placeholder' => '--',
                 'choices' => [
                     '1'  => 'Dirt Cheap',
                     '5'  => 'Eh',
                     '10' => 'Better Sell the House',
                 ],
             ])
-            ->add('submit', ButtonType::class, ['attr' => ['class' => 'submit']])
+            ->add('submit', SubmitType::class, ['attr' => ['class' => 'submit']])
+            ->setMethod('POST')
             ->setAction($this->generateUrl('demo_execute'))
             ->getForm();
 
@@ -51,26 +67,36 @@ class DefaultController extends BSDController
             $data = $form->getData();
 
             $controlData = [
-                'worth'   => 4,
-                'utility' => 10,
+                'worth'         => 6,
+                'visual_appeal' => 1,
+                'utility'       => 10,
             ];
 
-            $context = new Context(array_merge($controlData, ['use' => $data['use'], 'price' => $data['price']]));
+            $context = new Context(
+                array_merge($controlData,
+                ['use' => $data['use'],
+                 'aesthetic' => $data['aesthetic'],
+                 'price' => $data['price']]
+                )
+            );
+            // Default
             $output  = "Doesn't fit your criteria I would not recommend buying it";
 
             $rb   = $this->get('rule.builder');
             $rule = $rb->create(
                 $rb->logicalAnd(
-                    $rb['price']->LessThanOrEqualTo($rb['worth']),
-                    $rb['use']->GreaterThanOrEqualTo($rb['utility'])
-                ), function () use (&$output) {
-                $output = "This is what you're looking for. Buy it";
-            }
+                        $rb['price']->LessThanOrEqualTo($rb['worth']),
+                        $rb['aesthetic']->LessThanOrEqualTo($rb['visual_appeal']),
+                        $rb['use']->GreaterThanOrEqualTo($rb['utility'])
+                    ), function() use (&$output) {
+                        $output = "This is what you're looking for. Buy it";
+                    }
             );
 
-            $output = $rule->execute($context);
 
-            return $this->render("RulesDemoBundle:Default:evaluation.html.twig", ['output' => $output]);
+            $rule->execute($context);
+
+            return $this->render('RulesDemoBundle:Default:evaluation.html.twig', ['output' => $output]);
 
         }
 
